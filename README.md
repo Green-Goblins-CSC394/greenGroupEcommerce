@@ -9,3 +9,11 @@
 - Click Run!
 - App should be available at localhost:8080
 
+Login details:
+- user
+- \<the password printed in console>
+
+First Endpoint
+- change URL to \<base_url>/hi
+  - optional ?name=Spiderman
+
