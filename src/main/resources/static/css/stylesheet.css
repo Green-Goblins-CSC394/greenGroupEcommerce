@@ -12,6 +12,10 @@ header {
   text-align: center;
 }
 
+h1 {
+  display: inline;
+}
+
 nav {
   background-color: #444;
 }
@@ -55,6 +59,24 @@ nav ul li a {
 .product img {
   max-width: 100%;
   height: auto;
+}
+
+#cart_pic {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  text-align: right;
+  float: right;
+  padding: 10px;
+}
+
+#user_pic {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  text-align: right;
+  float: right;
+  padding: 10px;
 }
 
 button {
