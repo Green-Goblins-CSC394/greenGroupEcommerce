@@ -17,3 +17,9 @@ First Endpoint
 - change URL to \<base_url>/hi
   - optional ?name=Spiderman
 
+JIRA Integration
+- branch names should match ticket keys
+  - i.e. git switch -c GOB-5
+- commit messages should include ticket keys
+  - i.e. git commit -m 'GOB-5 make new endpoint'
+This just helps with tracking of issues and progress in JIRA
