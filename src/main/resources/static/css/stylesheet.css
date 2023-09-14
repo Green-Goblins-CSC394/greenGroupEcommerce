@@ -61,22 +61,13 @@ nav ul li a {
   height: auto;
 }
 
-#cart_pic {
+.header_pic {
   position: relative;
   width: 30px;
   height: 30px;
   text-align: right;
   float: right;
-  padding: 10px;
-}
-
-#user_pic {
-  position: relative;
-  width: 30px;
-  height: 30px;
-  text-align: right;
-  float: right;
-  padding: 10px;
+  padding: 12px;
 }
 
 button {
