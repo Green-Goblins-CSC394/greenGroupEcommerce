@@ -5,12 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
-  public HomeController() {}
+public class CartController {
+  public CartController() {}
 
-  @GetMapping("/")
-    public String homePage(Model model) {
-      return "home";
+  @GetMapping("/cart")
+    public String cartPage(Model model) {
+      return "cart";
     }
-    
+
 }
+
