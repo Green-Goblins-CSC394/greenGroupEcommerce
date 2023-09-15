@@ -5,6 +5,10 @@ body {
   background-color: #f4f4f4;
 }
 
+.cart_div {
+  display: inline
+}
+
 header {
   background-color: #333;
   color: white;
@@ -16,8 +20,29 @@ h1 {
   display: inline;
 }
 
+.logo {
+  width:100px;
+  height:100px;
+}
+
+.logo_parent {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
 nav {
   background-color: #444;
+}
+
+#quantity {
+  display: inline;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#product_page_image {
+  height: 500px;
+  width: 500px;
 }
 
 nav ul {

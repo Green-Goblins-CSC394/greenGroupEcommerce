@@ -5,12 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class ErrorController {
-    public ErrorController() {}
-        
-    @GetMapping("/error")
-        public String errorPage(Model model) {
-            return "error";
-        }
+public class ProductController {
+  public ProductController() {}
 
+  @GetMapping("/product")
+    public String productPage(Model model) {
+      return "product";
+    }
+    
 }
