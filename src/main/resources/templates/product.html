@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Green Goblins</title>
+  <link rel="stylesheet" href="css/stylesheet.css">
+</head>
+
+<body>
+  <header>
+    <div>
+    <h1>Green Goblins Apparel</h1>
+    <a href="cart"><img class="header_pic" src="images/shopping-cart.png"></a>
+    <a href="user"><img class="header_pic" src="images/user.png"></a>
+    </div>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="#">Products</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <h2>Product</h2>
+    <div class="product">
+    <img id="product_page_image" src="images/pic.jpg">
+    <h3>Item</h3>
+    <p>Description goes here</p>
+    <p>Price: $30</p>
+    <br>
+    <div class="cart_div">
+        <p id="quantity">Quantity: </p>
+        <input type="number" name="quantity" min="0" max="25">
+        <select name="size">
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select>
+    </div>
+    <br><br>
+    <button>Add to Cart</button>
+    </div>
+  </div>
+</body>
+</html>
