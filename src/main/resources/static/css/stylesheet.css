@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #EAF4F4;
 }
 
 .cart_div {
@@ -96,7 +96,7 @@ nav ul li a {
 }
 
 button {
-  background-color: #333;
+  background-color: #6B9080;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -105,5 +105,14 @@ button {
 }
 
 button:hover {
-  background-color: #555;
+  background-color: #CCE3DE;
+}
+
+.logo_pic{
+  position: relative;
+ width: 85px;
+ height: 85px;
+ float: left;
+ padding: -2px;
+   
 }

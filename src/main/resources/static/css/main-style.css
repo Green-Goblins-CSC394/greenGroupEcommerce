@@ -36,6 +36,7 @@ header {
   align-items: center;
   justify-content: center;
   align-items: center;
+  background-color:#333;
 }
 
 ul {
@@ -56,4 +57,25 @@ nav ul li a {
 nav ul li :hover {
   color: #a1a1a1;
   transition: 0.3sec;
+}
+
+h2{
+  color:#6B9080;
+  text-align:left;
+  font-size: 32px;
+}
+
+.scroll-container {
+  background-color: #ffffff;
+  opacity: 100%;
+  overflow:auto;
+  white-space:nowrap;
+  padding: 10px;
+  padding-left:10%;
+  padding-right: 1%;
+}
+
+.scroll-container img {
+padding-right: 100px;
+padding-left: 160px;
 }
