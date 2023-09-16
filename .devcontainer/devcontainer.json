@@ -21,6 +21,7 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "java -version",
+	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && git config --global core.autocrlf input",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
