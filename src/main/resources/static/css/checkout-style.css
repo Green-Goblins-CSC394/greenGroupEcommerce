@@ -1,5 +1,8 @@
 * {
   font-family: "Poppins", sans-serif;
+}
+
+.checkout-container form * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,11 +11,7 @@
   text-transform: capitalize;
 }
 
-.icon-cart {
-  margin-right: 5rem;
-}
-
-.container {
+.checkout-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,40 +19,40 @@
   min-height: 100vh;
 }
 
-.container form {
+.checkout-container form {
   padding: 20px;
   width: 700px;
   background: #f6fff8;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
-.container form .row {
+.checkout-container form .row {
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
 }
 
-.container form .row .col {
+.checkout-container form .row .col {
   flex: 1 1 250px;
 }
 
-.container form .row .col .title {
+.checkout-container form .row .col .title {
   font-size: 20px;
   color: #333;
   padding-bottom: 5px;
   text-transform: uppercase;
 }
 
-.container form .row .col .inputField {
+.checkout-container form .row .col .inputField {
   margin: 15px 0;
 }
 
-.container form .row .col .inputField span {
+.checkout-container form .row .col .inputField span {
   margin-bottom: 10px;
   display: block;
 }
 
-.container form .row .col .inputField input {
+.checkout-container form .row .col .inputField input {
   width: 100%;
   border: 1px solid #ccc;
   padding: 10px 15px;
@@ -61,20 +60,20 @@
   text-transform: none;
 }
 
-.container form .row .col .inputField input:focus {
+.checkout-container form .row .col .inputField input:focus {
   border: 1px solid #000;
 }
 
-.container form .row .col .half {
+.checkout-container form .row .col .half {
   display: flex;
   gap: 15px;
 }
 
-.container form .row .col .half .inputField {
+.checkout-container form .row .col .half .inputField {
   margin-top: 5px;
 }
 
-.container form .row .col .inputField img {
+.checkout-container form .row .col .inputField img {
   height: 34px;
   margin-top: 5px;
   filter: drop-shadow(0 0 1px #000);
@@ -87,7 +86,7 @@ label {
   cursor: pointer;
 }
 
-.container form .submit-btn {
+.checkout-container form .submit-btn {
   width: 100%;
   margin-top: 40px;
   padding: 12px;
@@ -97,7 +96,7 @@ label {
   cursor: pointer;
 }
 
-.container form .submit-btn:hover {
+.checkout-container form .submit-btn:hover {
   background: #6a5acd;
   transition: 0.3s linear;
 }

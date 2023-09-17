@@ -116,3 +116,10 @@ button:hover {
  padding: -2px;
    
 }
+
+table{
+  border: 1px solid #ddd;
+   padding-left: 20px;
+   text-align: left;
+   font-family: Arial, sans-serif;
+       }
