@@ -21,7 +21,7 @@ header {
 }
 
 .logo {
-  height: 4.6rem;
+  height: 4.0rem;
   width: 5.6rem;
   display: flex;
   justify-content: flex-start;
@@ -77,4 +77,22 @@ h2{
 .scroll-container img {
 padding-right: 10px;
 padding-left: 10px;
+}
+
+select {
+  width: 50px;
+  height: 35px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #6B9080;
+  font-family: 'Poppins', sans-serif;
+}
+
+select option {
+  background-color: #e6ffe6;
+}
+
+select:focus {
+  outline: none;
 }
