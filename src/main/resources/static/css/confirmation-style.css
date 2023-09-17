@@ -1,0 +1,31 @@
+.confirmation-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+}
+
+.confirmation-image {
+  flex: 1;
+  text-align: center;
+}
+
+.confirmation-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.confirmation-content {
+  flex: 2;
+  padding: 20px;
+}
+
+.confirmation-content h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.confirmation-content p {
+  font-size: 16px;
+}
