@@ -1,0 +1,51 @@
+name: Deploy to Amazon ElasticBeanstalk
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  AWS_REGION: "us-east-1"                 
+  ECR_REPOSITORY: "green-goblins-ecr"          
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Setup JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: '17'
+
+    - name: Create JAR
+      run: mvn clean package --file pom.xml
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
+        aws-region: "us-east-1"
+
+    - name: Upload package to S3
+      run: aws s3 cp ./target/greenGroupEcommerce-0.0.1-SNAPSHOT.jar s3://goblin-code-bucket/
+
+    - name: Create new ElasticBeanstalk App version
+      run: |
+        aws elasticbeanstalk create-application-version \
+        --application-name greengoblins \
+        --source-bundle S3Bucket="goblin-code-bucket",S3Key="greenGroupEcommerce-0.0.1-SNAPSHOT.jar" \
+        --version-label "version-${{ github.sha }}" \
+        --description "commit-sha-${{ github.sha }}"
+
+    - name: Deploy new ElasticBeanstalk Application Version
+      run: aws elasticbeanstalk update-environment --environment-name greengoblins-env --version-label "version-${{ github.sha }}"
