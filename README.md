@@ -9,3 +9,6 @@
 - Click Run!
 - App should be available at localhost:8080
 
+### Deployment
+MAKE SURE server.port is set to 5000!
+

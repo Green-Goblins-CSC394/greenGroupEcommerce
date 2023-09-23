@@ -1,4 +1,4 @@
-package com.example.greengroupecommerce;
+package com.greengroupecommerce;
 
 
 

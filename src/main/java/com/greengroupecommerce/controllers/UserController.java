@@ -1,4 +1,4 @@
-package com.example.greengroupecommerce.controllers;
+package com.greengroupecommerce.controllers;
 
 
 import org.springframework.stereotype.Controller;
