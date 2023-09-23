@@ -1,4 +1,4 @@
-package com.example.greengroupecommerce;
+package com.greengroupecommerce;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
