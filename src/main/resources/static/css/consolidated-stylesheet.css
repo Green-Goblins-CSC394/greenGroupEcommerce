@@ -1,0 +1,154 @@
+ @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Source+Sans+3&display=swap");
+
+
+/* common body styling across all pages */
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background-color: #A4C3B2;
+  /* without the code below, the navbar position shifts: */
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: "Poppins", sans-serif;
+}
+
+/* nav bar styling */
+.navBar {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.06);
+}
+
+.navBar .logo img {
+  height: 90px;
+  width: auto;
+}
+
+.navBar ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.navBar ul li {
+  margin-right: 20px;
+}
+
+.navBar .textLink {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navBar ul img {
+  max-width: auto;
+  height: 30px;
+}
+
+
+/* pre-existing styles */
+
+/* home */
+.bestSellersContainer {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.homeBanner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* products and home */
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.product {
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+
+.product img {
+  max-width: 100%;
+  height: auto;
+}
+
+button.addToCart {
+  background-color: #A4C3B2;
+  font-family: 'Source Sans 3', sans-serif;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.addToCart:hover {
+  background-color:#6B9080;;
+}
+
+/* product page */
+.scrollContainer {
+  background-color: #ffffff;
+  opacity: 100%;
+  overflow:auto;
+  white-space:nowrap;
+  padding-left:10px;
+  padding-right: 5%;
+}
+.scrollContainer img {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.productOptions {
+  display: inline
+}
+
+.productOptions input{
+  margin-right: 15px;
+}
+
+.productOptions p {
+  display: inline;
+  margin-right: 5px;
+}
+
+.productOptions select {
+  width: 80px;
+  height: 25px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #6B9080;
+}
+
+.productOptions input, select {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  vertical-align:top;
+}
+
+.productOptions select option {
+  background-color: #e6ffe6;
+}
