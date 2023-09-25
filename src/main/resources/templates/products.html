@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Goblin Tees | Men</title>
+  <link rel="stylesheet" th:href="@{/css/consolidated-stylesheet.css}">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+
+<body>
+  <!-- nav bar -->
+  <div th:replace="~{/fragments/navigation.html :: navBar(${''})}"></div>
+
+  <div class="bestSellersContainer">
+    <!-- Zee: I plan to fix this heading to be dynamic: -->
+    <h2>Men </h2>
+    <div class="productGrid">
+      <div th:each="product: ${products}">
+        <div class="product">
+          <a th:href="@{products/{name}(name=${product.name})}">
+            <img th:src="@{${product.image}}">
+          </a>
+          <h3 th:text="${product.name}"></h3>
+          <p th:text="${product.description}"></p>
+          <p th:text="${product.price}" style="font-weight: bold;"></p>
+          <button class="addToCart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -3,66 +3,51 @@
 
 <head>
   <title>Goblin Tees | Home</title>
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="css/main-style.css">
-  <link rel="stylesheet" href="css/home-style.css">
-  <link rel="stylesheet" href="css/stylesheet.css">
+  <link rel="stylesheet" th:href="@{/css/consolidated-stylesheet.css}">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
 
 <body>
-  <header>
-    <a href="/" class="logo"> <img class = "logo_pic" 
-      src = "images/greenGoblinClipArtTransparent.png"> </a> <!--Check if this needs fix-->
-    <nav>
-      <div class="nav-bar">
-        <ul>
-          <li><a href="men">Men</a></li>
-          <li><a href="women">Women</a></li>
-          <li><a href="kids">Kids</a></li>
-          <li><a href="cart"><img class="icon-bag" src="images/bag-icon.png"></a></li>
-          <li><a href="user"><img class="header_pic" src="images/user-icon.png"></a></li>
-        </ul>
-      </div>
-    </nav>
-
-  </header>
-    <section class="banner">
-      <img src="images/home-banner.jpg">
-    </section>
-    <div class="container">
-      <h1> Green Goblins Best Sellers </h1>
-        <br>
-        <br>
-      <div class="product-grid">
-        <div class="product">
-          <img src="images/menKiwi.avif">
+  <!-- nav bar -->
+  <div th:replace="~{/fragments/navigation.html :: navBar(${''})}"></div>
+  
+  <section class="homeBanner">
+    <img src="images/home-banner.jpg">
+  </section>
+  <div class="bestSellersContainer">
+    <h1> Green Goblins Best Sellers </h1>
+    <br>
+    <div class="productGrid">
+      <div class="product">
+        <img src="images/menKiwi.avif">
         <h3>Kiwi</h3>
         <p>Men's Cotton Crew Neck Short-Sleeve T-Shirt </p>
         <p><b>$19.90 </b></p>
-        <button>Add to Cart</button>
+        <button class="addToCart">Add to Cart</button>
       </div>
-        <div class="product">
+      <div class="product">
         <img src="images/womenViridian.avif">
         <h3>Viridian</h3>
         <p>Women's Cotton Boat Neck<br> Short-Sleeve T-Shirt</p>
         <p><b>$29.90 </b></p>
-        <button>Add to Cart</button>
+        <button class="addToCart">Add to Cart</button>
       </div>
-        <div class="product">
+      <div class="product">
         <img src="images/kidsForest.jpg">
         <h3>Forest</h3>
         <p>Kids' Cotton Oversized Crew Neck Short-Sleeve T-Shirt </p>
         <p><b>$9.90 </b></p>
-        <button>Add to Cart</button>
+        <button class="addToCart">Add to Cart</button>
       </div>
-        <div class="product">
+      <div class="product">
         <img src="images/womenPine.avif">
         <h3>Pine</h3>
         <p>Women's Waffle Crew Neck<br> Long-Sleeve T-Shirt</p>
         <p><b>$39.90 </b></p>
-        <button>Add to Cart</button>
-        </div>
+        <button class="addToCart">Add to Cart</button>
       </div>
-    </div> 
+    </div>
+  </div>
 </body>
+
 </html>
