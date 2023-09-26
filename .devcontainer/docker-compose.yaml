@@ -2,13 +2,13 @@ version: "3"
 
 services:
   db:
-    image: 'postgres:latest'
+    image: postgres:latest
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      POSTGRES_DB: mydatabase
+      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: myuser
     ports:
-      - '5432'
+      - 5432
   app:
     image: "mcr.microsoft.com/devcontainers/java:0-17"
     volumes: 

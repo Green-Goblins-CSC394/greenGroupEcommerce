@@ -10,5 +10,8 @@
 - App should be available at localhost:8080
 
 ### Deployment
-MAKE SURE server.port is set to 5000!
+- In [application.properties](src/main/resources/application.properties) change `spring.profiles.active` value from `dev` to `prod`.
 
+- In [application-prod.properties](src/main/resources/application-prod.properties) fill out the relevant details.
+
+- Run `mvn install`
