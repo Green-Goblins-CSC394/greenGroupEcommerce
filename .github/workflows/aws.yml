@@ -26,8 +26,15 @@ jobs:
       with:
         java-version: '17'
 
+    - name: Build PROD Profile
+      env:
+        DB_USER: ${{ secrets.DB_USER }}
+        DB_CONNECTION_STR: ${{ secrets.DB_CONNECTION_STR }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      run: echo "spring.datasource.username=$DB_USER" >> src/main/resources/application-prod.properties && echo "spring.datasource.url=$DB_CONNECTION_STR" >> src/main/resources/application-prod.properties && echo "spring.datasource.password=$DB_PASSWORD" >> src/main/resources/application-prod.properties
+
     - name: Create JAR
-      run: mvn clean package --file pom.xml
+      run: mvn clean package --file pom.xml -Dspring.profiles.active=prod
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
