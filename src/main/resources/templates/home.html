@@ -15,36 +15,18 @@
     <img src="images/home-banner.jpg">
   </section>
   <div class="bestSellersContainer">
-    <h1> Green Goblins Best Sellers </h1>
+    <h1> Latest Tees </h1>
     <br>
     <div class="productGrid">
-      <div class="product">
-        <img src="images/menKiwi.avif">
-        <h3>Kiwi</h3>
-        <p>Men's Cotton Crew Neck Short-Sleeve T-Shirt </p>
-        <p><b>$19.90 </b></p>
-        <button class="addToCart">Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="images/womenViridian.avif">
-        <h3>Viridian</h3>
-        <p>Women's Cotton Boat Neck<br> Short-Sleeve T-Shirt</p>
-        <p><b>$29.90 </b></p>
-        <button class="addToCart">Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="images/kidsForest.jpg">
-        <h3>Forest</h3>
-        <p>Kids' Cotton Oversized Crew Neck Short-Sleeve T-Shirt </p>
-        <p><b>$9.90 </b></p>
-        <button class="addToCart">Add to Cart</button>
-      </div>
-      <div class="product">
-        <img src="images/womenPine.avif">
-        <h3>Pine</h3>
-        <p>Women's Waffle Crew Neck<br> Long-Sleeve T-Shirt</p>
-        <p><b>$39.90 </b></p>
-        <button class="addToCart">Add to Cart</button>
+      <div th:each="product: ${products}">
+        <div class="product">
+          <a th:href="@{products/{name}(name=${product.getProductID()})}">
+            <img th:src="@{${product.getImagePath()}}">
+          </a>
+          <h3 th:text="${product.getProductName()}"></h3>
+          <p th:text="${'&#36;'+product.getPrice()}" style="font-weight: bold;"></p>
+          <button class="addToCart">Add to Cart</button>
+        </div>
       </div>
     </div>
   </div>
