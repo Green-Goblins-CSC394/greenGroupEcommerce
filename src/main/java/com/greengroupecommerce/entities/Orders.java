@@ -13,69 +13,39 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "Orders")
+@Table(name = "`Orders`")
 public class Orders {
   @Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "order_id")
+	@Getter
+	@Setter
 	private UUID orderID;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
+	@Getter
+	@Setter
 	private Users user;
   
   @Column(name = "transaction_price")
+	@Getter
+	@Setter
 	private BigDecimal transactionbPrice;
 
   @Column(name = "tracking_number")
+	@Getter
+	@Setter
 	private String trackingNumber;
 
   @Column(name = "completed_at")
+	@Getter
+	@Setter
 	private Timestamp completedAt;
-
-	//Getters and Setters
-	public UUID getOrderID() {
-		return orderID;
-	}
-
-	public void setOrderID(UUID orderID) {
-		this.orderID = orderID;
-	}
-
-	public Users getUser() {
-		return user;
-	}
-
-	public void setUser(Users user) {
-		this.user = user;
-	}
-
-	public BigDecimal getTransactionbPrice() {
-		return transactionbPrice;
-	}
-
-	public void setTransactionbPrice(BigDecimal transactionbPrice) {
-		this.transactionbPrice = transactionbPrice;
-	}
-
-	public String getTrackingNumber() {
-		return trackingNumber;
-	}
-
-	public void setTrackingNumber(String trackingNumber) {
-		this.trackingNumber = trackingNumber;
-	}
-
-	public Timestamp getCompletedAt() {
-		return completedAt;
-	}
-
-	public void setCompletedAt(Timestamp completedAt) {
-		this.completedAt = completedAt;
-	}
-
 	
 
 }

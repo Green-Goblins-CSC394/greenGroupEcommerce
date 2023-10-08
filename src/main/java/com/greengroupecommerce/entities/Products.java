@@ -13,69 +13,49 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "Products")
+@Table(name = "`Products`")
 public class Products {
 
   @Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "product_id")
+  @Getter
+	@Setter
 	private UUID productID;
 
   @Column(name = "product_name")
+  @Getter
+	@Setter
 	private String productName;
 
 	@Column(name = "price")
+  @Getter
+	@Setter
 	private BigDecimal price;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "category_id")
+  @Getter
+	@Setter
 	private Category category;
 
   @Column(name = "created_at")
+  @Getter
+	@Setter
 	private Timestamp createdAt;
 
-  //Getters and Setters
-  public UUID getProductID() {
-    return productID;
-  }
+  @Column(name = "image_path")
+  @Getter
+	@Setter
+	private String imagePath;
 
-  public void setProductID(UUID productID) {
-    this.productID = productID;
-  }
+  @Column(name = "description")
+  @Getter
+	@Setter
+	private String description;
 
-  public String getProductName() {
-    return productName;
-  }
-
-  public void setProductName(String productName) {
-    this.productName = productName;
-  }
-
-  public BigDecimal getPrice() {
-    return price;
-  }
-
-  public void setPrice(BigDecimal price) {
-    this.price = price;
-  }
-
-  public Category getCategory() {
-    return category;
-  }
-
-  public void setCategory(Category category) {
-    this.category = category;
-  }
-
-  public Timestamp getCreatedAt() {
-    return createdAt;
-  }
-
-  public void setCreatedAt(Timestamp createdAt) {
-    this.createdAt = createdAt;
-  }
-
-  
 }

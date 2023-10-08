@@ -11,56 +11,34 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "Inventory")
+@Table(name = "`Inventory`")
 public class Inventory {
   
   @Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "inventory_id")
+  @Getter
+	@Setter
 	private UUID inventoryID;
 
   @Column(name = "size")
+  @Getter
+	@Setter
 	private String size;
 
   @Column(name = "remaining_stock")
+  @Getter
+	@Setter
 	private short remainingStock;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "product_id")
+  @Getter
+	@Setter
 	private Products product;
 
-  //Getters and Setters
-  public UUID getInventoryID() {
-    return inventoryID;
-  }
-
-  public void setInventoryID(UUID inventoryID) {
-    this.inventoryID = inventoryID;
-  }
-
-  public String getSize() {
-    return size;
-  }
-
-  public void setSize(String size) {
-    this.size = size;
-  }
-
-  public short getRemainingStock() {
-    return remainingStock;
-  }
-
-  public void setRemainingStock(short remainingStock) {
-    this.remainingStock = remainingStock;
-  }
-
-  public Products getProduct() {
-    return product;
-  }
-
-  public void setProduct(Products product) {
-    this.product = product;
-  }
 }

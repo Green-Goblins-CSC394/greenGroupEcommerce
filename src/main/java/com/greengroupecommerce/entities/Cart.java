@@ -11,68 +11,39 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "Cart")
+@Table(name = "`Cart`")
 public class Cart {
 
   @Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "cart_id")
+	@Getter
+	@Setter
 	private UUID cartID;
 
 	@ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "user_id")
+	@Getter
+	@Setter
 	private Users user;
   
 	@ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "product_id")
+	@Getter
+	@Setter
 	private Products product;
 
 	@Column(name = "size")
+	@Getter
+	@Setter
 	private String size;
   
 	@Column(name = "quantity")
+	@Getter
+	@Setter
 	private short quantity;
-
-	//Getters and Setters
-	public UUID getCartID() {
-		return cartID;
-	}
-
-	public void setCartID(UUID cartID) {
-		this.cartID = cartID;
-	}
-
-	public Users getUser() {
-		return user;
-	}
-
-	public void setUser(Users user) {
-		this.user = user;
-	}
-
-	public Products getProduct() {
-		return product;
-	}
-
-	public void setProduct(Products product) {
-		this.product = product;
-	}
-
-	public String getSize() {
-		return size;
-	}
-
-	public void setSize(String size) {
-		this.size = size;
-	}
-
-	public short getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(short quantity) {
-		this.quantity = quantity;
-	}
 }
