@@ -15,30 +15,24 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "`Inventory`")
 public class Inventory {
   
   @Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "inventory_id")
-  @Getter
-	@Setter
 	private UUID inventoryID;
 
   @Column(name = "size")
-  @Getter
-	@Setter
 	private String size;
 
   @Column(name = "remaining_stock")
-  @Getter
-	@Setter
 	private short remainingStock;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "product_id")
-  @Getter
-	@Setter
 	private Products product;
 
 }
