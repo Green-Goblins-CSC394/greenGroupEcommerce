@@ -16,43 +16,31 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "`Users`")
 public class Users {
 
   @Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "user_id")
-  @Getter
-	@Setter
 	private UUID userID;
 
   @Column(name = "email")
-  @Getter
-	@Setter
 	private String email;
 
 	@Column(name = "password")
-  @Getter
-	@Setter
 	private String password;
 
 	@Column(name = "created_at")
-  @Getter
-	@Setter
 	private Timestamp createdAt;
   
 	@Column(name = "last_login")
-  @Getter
-	@Setter
 	private Timestamp lastLogin;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-  @Getter
-	@Setter
   private List<Orders> orders;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-  @Getter
-	@Setter
   private List<Cart> cartItems;
 }

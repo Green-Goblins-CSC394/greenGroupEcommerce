@@ -17,34 +17,26 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "`Orders`")
 public class Orders {
   @Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "order_id")
-	@Getter
-	@Setter
 	private UUID orderID;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
-	@Getter
-	@Setter
 	private Users user;
   
   @Column(name = "transaction_price")
-	@Getter
-	@Setter
 	private BigDecimal transactionbPrice;
 
   @Column(name = "tracking_number")
-	@Getter
-	@Setter
 	private String trackingNumber;
 
   @Column(name = "completed_at")
-	@Getter
-	@Setter
 	private Timestamp completedAt;
 	
 

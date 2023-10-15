@@ -17,45 +17,33 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "`Products`")
 public class Products {
 
   @Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "product_id")
-  @Getter
-	@Setter
 	private UUID productID;
 
   @Column(name = "product_name")
-  @Getter
-	@Setter
 	private String productName;
 
 	@Column(name = "price")
-  @Getter
-	@Setter
 	private BigDecimal price;
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "category_id")
-  @Getter
-	@Setter
 	private Category category;
 
   @Column(name = "created_at")
-  @Getter
-	@Setter
 	private Timestamp createdAt;
 
   @Column(name = "image_path")
-  @Getter
-	@Setter
 	private String imagePath;
 
   @Column(name = "description")
-  @Getter
-	@Setter
 	private String description;
 
 }

@@ -15,23 +15,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "`Category`")
 public class Category {
   @Id
 	@GeneratedValue(strategy = GenerationType.UUID)
 	@Column(name = "category_id")
-  @Getter
-	@Setter
 	private UUID categoryID;
 
   @Column(name = "category_name")
-  @Getter
-	@Setter
 	private String categoryName;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
-  @Getter
-	@Setter
   private List<Products> products;
 
 }
