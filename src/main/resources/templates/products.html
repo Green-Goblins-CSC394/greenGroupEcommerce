@@ -15,7 +15,7 @@
     <div class="productGrid">
       <div th:each="product: ${products}">
         <div class="product">
-          <a th:href="@{products/{name}(name=${product.getProductID()})}">
+          <a th:href="@{/products/{name}(name=${product.getProductID()})}">
             <img th:src="@{${product.getImagePath()}}">
           </a>
           <h3 th:text="${product.getProductName()}"></h3>
