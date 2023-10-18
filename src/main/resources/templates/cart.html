@@ -190,10 +190,15 @@
  
 
   <br>   <br>  <br>
+  <form action="/call-checkout" method="POST">
   <div class="checkout_button_container" style = "padding-bottom: 160px; padding-left: 20px">
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-   <button onclick="location.href='/checkout'" style = " font-size: 25px; width: 222px">Checkout</button>
+      <button type="submit" id="checkout-button" style=" font-size: 25px; width: 222px">Checkout</button>
   </div>
+  </form>
+ <script>
+   Stripe.setPublishableKey("pk_test_51NvnzXAJzwVAVVDsmV4hWaVcpbcHqzB27SJysSXPbRwhKVRc2PJ21HvDJv599aLxnElH8W3o35JfxqNhMf3jGUq300CffCfcJA");
+ </script>
 
 </body>
 </html>
