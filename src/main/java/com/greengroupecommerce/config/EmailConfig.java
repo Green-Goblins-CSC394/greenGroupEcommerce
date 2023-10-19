@@ -28,20 +28,14 @@ public class EmailConfig {
 
     @Bean
     public AmazonSimpleEmailService amazonSimpleEmailService() {
-        BasicAWSCredentials credentials = new BasicAWSCredentials("AKIAVFE43N4HPR7NJO6H", "9uloBM4BxCUkH2o3yh3oAW52kS2nqe14PCkn1EEI");
+        BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
         return AmazonSimpleEmailServiceClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion("us-east-1")
                 .build();
     }
-
     @Bean
     public MailSender mailSender(AmazonSimpleEmailService amazonSimpleEmailService) {
         return new SimpleEmailServiceMailSender(amazonSimpleEmailService);
     }
-/* 
-    @Bean
-    public JavaMailSender javaMailSender(AmazonSimpleEmailService amazonSimpleEmailService) {
-        return new SimpleEmailServiceJavaMailSender(amazonSimpleEmailService);
-    }*/
 }
