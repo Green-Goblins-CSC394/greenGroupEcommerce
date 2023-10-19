@@ -4,8 +4,6 @@ import com.stripe.Stripe;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
 
-import lombok.Value;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +15,9 @@ public class StripeController {
 
     @PostMapping
     public RedirectView createCheckoutSession() throws Exception {
-        @Value("${stripe.api.secretKey}")
-        final String secretKey;
 
-        Stripe.apiKey = secretKey;
+        String YOUR_DOMAIN = "http://green-goblins.us-east-1.elasticbeanstalk.com";
 
-        String YOUR_DOMAIN = "http://localhost:8080";
         SessionCreateParams params =
                 SessionCreateParams.builder()
                         .setMode(SessionCreateParams.Mode.PAYMENT)
