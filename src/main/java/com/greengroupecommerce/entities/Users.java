@@ -1,7 +1,14 @@
 package com.greengroupecommerce.entities;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
@@ -19,7 +26,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "`Users`")
-public class Users {
+public class Users implements UserDetails {
 
   @Id
 	@GeneratedValue(strategy = GenerationType.UUID)
@@ -43,4 +50,36 @@ public class Users {
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
   private List<Cart> cartItems;
+
+
+	//UserDetails functions - required interface for session
+	public String getUsername(){
+		return this.email;
+	}
+
+	public boolean isEnabled(){
+		return true;
+	}
+
+	public boolean isCredentialsNonExpired(){
+		return true;
+	}
+
+	// Setting all users to have the "USER" role
+	public Collection<? extends GrantedAuthority> getAuthorities(){
+		List <GrantedAuthority> permissions = new ArrayList<GrantedAuthority>();
+		if (this.isEnabled()){
+			permissions.add(new SimpleGrantedAuthority("USER"));
+		}
+		return permissions;
+	}
+
+	public boolean isAccountNonExpired(){
+		return true;
+	}
+
+	public boolean isAccountNonLocked(){
+		return true;
+	}
+
 }

@@ -17,7 +17,7 @@ public class StripeController {
     public RedirectView createCheckoutSession() throws Exception {
 
         String YOUR_DOMAIN = "http://green-goblins.us-east-1.elasticbeanstalk.com";
-
+      
         SessionCreateParams params =
                 SessionCreateParams.builder()
                         .setMode(SessionCreateParams.Mode.PAYMENT)
