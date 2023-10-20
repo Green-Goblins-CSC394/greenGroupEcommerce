@@ -24,6 +24,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests( auth -> {
                 auth.requestMatchers("/user").authenticated();
+                auth.requestMatchers("/cart").authenticated();
                 auth.anyRequest().permitAll();
             })
             .formLogin(withDefaults())
