@@ -1,4 +1,4 @@
-package com.greengroupecommerce;
+package com.greengroupecommerce.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
