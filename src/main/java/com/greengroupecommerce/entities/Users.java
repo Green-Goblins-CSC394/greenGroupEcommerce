@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.sql.Timestamp;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -48,8 +49,12 @@ public class Users implements UserDetails {
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
   private List<Orders> orders;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
   private List<Cart> cartItems;
+
+	public void addItemToCart(Cart cart) {
+		this.cartItems.add(cart);
+	}
 
 
 	//UserDetails functions - required interface for session

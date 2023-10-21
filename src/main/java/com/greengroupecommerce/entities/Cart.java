@@ -25,7 +25,7 @@ public class Cart {
 	@Column(name = "cart_id")
 	private UUID cartID;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "user_id")
 	private Users user;
   
