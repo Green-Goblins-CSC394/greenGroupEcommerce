@@ -46,16 +46,19 @@ public class Users implements UserDetails {
 	@Column(name = "last_login")
 	private Timestamp lastLogin;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
   private List<Orders> orders;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Cart> cartItems;
 
 	public void addItemToCart(Cart cart) {
 		this.cartItems.add(cart);
 	}
 
+	public void addOrderToUser(Orders order) {
+		this.orders.add(order);
+	}
 
 	//UserDetails functions - required interface for session
 	public String getUsername(){

@@ -12,4 +12,5 @@ import com.greengroupecommerce.entities.Users;
 @Repository
 public interface CartRepository extends JpaRepository<Cart, UUID> {
   public Cart findByUserAndProductAndSize(Users user, Products product, String size);
+  public void deleteByCartID(UUID uuid);
 }
