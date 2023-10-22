@@ -1,55 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <title>Goblin Tees | Cart</title>
-    <link rel="stylesheet" th:href="@{/css/consolidated-stylesheet.css}">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  </head>
+<head>
+  <title>Goblin Tees | Cart</title>
+  <link rel="stylesheet" th:href="@{/css/consolidated-stylesheet.css}">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
 
-  <body>
-    <!-- nav bar -->
-    <div th:replace="~{fragments/navigation.html :: navBar(${'Shopping Cart'})}"></div>
+<body>
+  <!-- nav bar -->
+  <div th:replace="~{fragments/navigation.html :: navBar(${'Shopping Cart'})}"></div>
 
-    <table style = "width:96%; margin-left: 1.5%; margin-top: 2%">
-      <!-- First Row -->
-      <tr th:each="cartItem: ${cartItems}" style="height: 350px;" > 
-        <!-- First Column -->
-        <th style = "width: 300px; padding-right: 0px; padding-left: 90px" >
-            <img th:src="@{${cartItem.getProduct().getImagePath()}}" style="width: 300px; height: 300px;">
-        </th>
-        <th style = "width: 200px; padding-right: 100px"> 
-            <h3 th:text="${cartItem.getProduct().getProductName()}"></h3>
-                <br> <br> 
-                <b>Size:</b> <p th:text="${cartItem.getSize()}"></p>
-                <br> <b>Price:</b>  <p th:text="${'&#36;'+cartItem.getProduct().getPrice()}"></p>
-                <!-- <h5> 🗑 Remove Item </h5> -->
-                <form th:action="@{/removeFromCart}" method="post">
-                  <input type="hidden" th:value="${cartItem.getProduct().getProductID()}" th:name="productID" />
-                  <input type="hidden" th:value="${cartItem.getSize()}" th:name="size" />
-                  <button class="addToCart" th:name="action" type="submit">🗑 Remove Item</button>
-                </form>
-        </th>
-        <!-- Second Column -->
-        <th style = "width: 20px; padding-right: 200px; text-align: left; font-size: 22px"> 
-          <h3 style = "font-size: 22px"> <b>Quantity </b></h3>  
-          <p th:text="${cartItem.getQuantity()}"></p>
-          <br><br><br><br><br><br>
-        </th>
-        <!-- Third Column -->
-        <th style = "width: 20px; padding-right: 50px; text-align: left; font-size: 22px"> 
-          <h3 style = "font-size: 22px"> <b>Subtotal </b></h3> 
-          <p th:text="${'&#36;'+(cartItem.getProduct().getPrice() * cartItem.getQuantity())}"></p>
-          <br><br><br><br><br><br>
-        </th>
-     </tr> 
-    </table>
+  <table style="width:96%; margin-left: 1.5%; margin-top: 2%">
+    <!-- First Row -->
+    <tr th:each="cartItem: ${cartItems}" style="height: 350px;">
+      <!-- First Column -->
+      <th style="width: 300px; padding-right: 0px; padding-left: 90px">
+        <img th:src="@{${cartItem.getProduct().getImagePath()}}" style="width: 300px; height: 300px;">
+      </th>
+      <th style="width: 200px; padding-right: 100px">
+        <h3 th:text="${cartItem.getProduct().getProductName()}"></h3>
+        <br> <br>
+        <b>Size:</b>
+        <p th:text="${cartItem.getSize()}"></p>
+        <br> <b>Price:</b>
+        <p th:text="${'&#36;'+cartItem.getProduct().getPrice()}"></p>
+        <!-- <h5> 🗑 Remove Item </h5> -->
+        <form th:action="@{/removeFromCart}" method="post">
+          <input type="hidden" th:value="${cartItem.getProduct().getProductID()}" th:name="productID" />
+          <input type="hidden" th:value="${cartItem.getSize()}" th:name="size" />
+          <button class="addToCart" th:name="action" type="submit">🗑 Remove Item</button>
+        </form>
+      </th>
+      <!-- Second Column -->
+      <th style="width: 20px; padding-right: 200px; text-align: left; font-size: 22px">
+        <h3 style="font-size: 22px"> <b>Quantity </b></h3>
+        <p th:text="${cartItem.getQuantity()}"></p>
+        <br><br><br><br><br><br>
+      </th>
+      <!-- Third Column -->
+      <th style="width: 20px; padding-right: 50px; text-align: left; font-size: 22px">
+        <h3 style="font-size: 22px"> <b>Subtotal </b></h3>
+        <p th:text="${'&#36;'+(cartItem.getProduct().getPrice() * cartItem.getQuantity())}"></p>
+        <br><br><br><br><br><br>
+      </th>
+    </tr>
+  </table>
 
 
-  </body>
+</body>
 
-  <br>   <br>  <br>
-  <form action="/call-checkout" method="POST">
+<br> <br> <br>
+<form th:action="@{/checkout}" method="post">
+  <div class="checkout_button_container" style="padding-bottom: 160px; padding-left: 20px">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="submit" id="checkout-button" style=" font-size: 25px; width: 222px">Checkout</button>
+  </div>
+</form>
+<!-- <form action="/call-checkout" method="POST">
   <div class="checkout_button_container" style = "padding-bottom: 160px; padding-left: 20px">
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
       <button type="submit" id="checkout-button" style=" font-size: 25px; width: 222px">Checkout</button>
@@ -57,7 +65,8 @@
   </form>
  <script>
    Stripe.setPublishableKey("pk_test_51NvnzXAJzwVAVVDsmV4hWaVcpbcHqzB27SJysSXPbRwhKVRc2PJ21HvDJv599aLxnElH8W3o35JfxqNhMf3jGUq300CffCfcJA");
- </script>
+ </script> -->
 
 </body>
+
 </html>
