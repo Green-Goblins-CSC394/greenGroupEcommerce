@@ -11,42 +11,37 @@
   <!-- nav bar -->
   <div th:replace="~{fragments/navigation.html :: navBar(${''})}"></div>
 
-  <div class="bestSellersContainer">
-    <h2 th:text="${product.getCategory().getCategoryName() + ' T-shirt'}"></h2>
-    <div class="product">
-      <div class="scroll-container">
-        <br>
+  <div class="productPgContainer">
+    <h2 th:text="${product.getCategory().getCategoryName().toUpperCase() + ' ' + product.getProductName().toUpperCase() + ' T-SHIRT'}"></h2>
+      <div class="scrollContainer">
         <img id="product_page_image" th:src="@{${product.getImagePath()}}">
-        <br>&nbsp;
-      </div>
-      
-      <h3 th:text="${product.getProductName()}"></h3>
-      <p th:text="${product.getDescription()}"></p>
-      <p th:text="${'&#36;'+product.getPrice()}" style="font-weight: bold;"></p>
-      <br>&nbsp;&nbsp;&nbsp;
 
-      <div class="productOptions">
-        <form th:action="@{/cart}" method="post">
-          <input type="hidden" th:value="${product.getProductID()}" th:name="productID" />
-          <p id="quantity"> Quantity: </p>
-          <input type="number" th:name="quantity" min="1" max="25" value="1" style="font-size: 16px">
-          <select th:name="size" style="font-size:16px;">
-            <option value="XS">XS</option>
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
-          <br><br><br>
-          <button class="addToCart" th:name="action" type="submit">Add to Cart</button>
-          <br><br><br>
-        </form>
+        <div class="productOptions">
+          <h3 th:text="${product.getProductName()}"></h3>
+          <p th:text="${product.getDescription()}"></p>
+          <br>
+          <form th:action="@{/cart}" method="post">
+            <input type="hidden" th:value="${product.getProductID()}" th:name="productID" />
+            <br>
+            <p><b>Size:</b></p><br>
+            <select th:name="size" style="font-size:16px;">
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+            </select>
+            <br><br>
+            <p th:text="${'&#36;'+product.getPrice()}" style="font-weight: bold; font-size: 30px;"></p>
+            <br><br>
+            <p id="quantity"><b>Quantity:</b></p><br>
+            <input type="number" th:name="quantity" min="1" max="25" value="1" style="font-size: 16px">
+            <br><br>
+            <button class="addToCart" th:name="action" type="submit">Add to Cart</button>
+            <br><br><br>
+          </form>
+        </div>
       </div>
-
-      <!-- <br><br><br> -->
-      <!-- <button class="addToCart" onclick="window.location.href='/cart'">Add to Cart</button> -->
-      <!-- <br><br><br> -->
-    </div>
   </div>
 </body>
 </html>>

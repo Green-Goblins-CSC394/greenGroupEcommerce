@@ -25,7 +25,6 @@
         <p th:text="${cartItem.getSize()}"></p>
         <br> <b>Price:</b>
         <p th:text="${'&#36;'+cartItem.getProduct().getPrice()}"></p>
-        <!-- <h5> 🗑 Remove Item </h5> -->
         <form th:action="@{/removeFromCart}" method="post">
           <input type="hidden" th:value="${cartItem.getProduct().getProductID()}" th:name="productID" />
           <input type="hidden" th:value="${cartItem.getSize()}" th:name="size" />
@@ -57,15 +56,6 @@
     <button type="submit" id="checkout-button" style=" font-size: 25px; width: 222px">Checkout</button>
   </div>
 </form>
-<!-- <form action="/call-checkout" method="POST">
-  <div class="checkout_button_container" style = "padding-bottom: 160px; padding-left: 20px">
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-      <button type="submit" id="checkout-button" style=" font-size: 25px; width: 222px">Checkout</button>
-  </div>
-  </form>
- <script>
-   Stripe.setPublishableKey("pk_test_51NvnzXAJzwVAVVDsmV4hWaVcpbcHqzB27SJysSXPbRwhKVRc2PJ21HvDJv599aLxnElH8W3o35JfxqNhMf3jGUq300CffCfcJA");
- </script> -->
 
 </body>
 

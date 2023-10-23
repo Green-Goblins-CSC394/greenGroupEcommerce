@@ -9,17 +9,18 @@
 
 <body>
   <!-- nav bar -->
-  <div th:replace="~{fragments/navigation.html :: navBar('')}"></div>
-  <div class="productsPage">
-    <h2 th:text="${pageTitle.toUpperCase()+' T-SHIRTS'}"></h2>
+  <div th:replace="~{fragments/navigation.html :: navBar(${pageTitle})}"></div>
+
+  <div class="bestSellersContainer">
     <div class="productGrid">
       <div th:each="product: ${products}">
         <div class="product">
           <a th:href="@{/products/{name}(name=${product.getProductID()})}">
             <img th:src="@{${product.getImagePath()}}">
           </a>
-          <p th:text="${product.getProductName()}"></p>
+          <h3 th:text="${product.getProductName()}"></h3>
           <p th:text="${'&#36;'+product.getPrice()}" style="font-weight: bold;"></p>
+          <button class="addToCart">Add to Cart</button>
         </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
 <body>
   <div th:fragment="navBar(pageTitle)" class="navBar">
       <a href="/" class="logo">
-          <img src="/images/greenGoblinClipArtTransparent.png">
+          <img src="/images/goblin_logo.png">
       </a>
-      <div class="title" th:text="${pageTitle}"></div>
+      <h3 class="navTitle" th:text="${pageTitle}"></h3>
       <ul>
         <li><a th:href="@{/products(category='Men')}" class="textLink">Men</a></li>
         <li><a th:href="@{/products(category='Women')}" class="textLink">Women</a></li>
