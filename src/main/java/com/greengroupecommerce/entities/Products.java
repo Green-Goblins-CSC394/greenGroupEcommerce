@@ -46,4 +46,7 @@ public class Products {
   @Column(name = "description")
 	private String description;
 
+	@Column(name = "stripe_product_id")
+	private String stripeProductId;
+
 }

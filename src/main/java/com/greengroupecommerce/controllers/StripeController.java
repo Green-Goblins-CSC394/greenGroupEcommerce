@@ -1,10 +1,18 @@
 package com.greengroupecommerce.controllers;
 
-import com.stripe.Stripe;
+import com.greengroupecommerce.entities.Cart;
+import com.greengroupecommerce.entities.Users;
+import com.greengroupecommerce.repositories.UsersRepository;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
 
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
@@ -12,9 +20,30 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequestMapping("/call-checkout")
 public class StripeController {
+  
+    @Autowired
+    private UsersRepository userRepository;
 
     @PostMapping
-    public RedirectView createCheckoutSession() throws Exception {
+    public RedirectView createCheckoutSession(Principal principal, Model model) throws Exception {
+
+        Users user = this.userRepository.findByEmail(principal.getName());
+        List<Cart> cartItems = user.getCartItems();
+
+        List<SessionCreateParams.LineItem> lineItems = new ArrayList<>();
+
+        for (Cart item : cartItems) {
+            SessionCreateParams.LineItem lineItem = 
+            SessionCreateParams.LineItem.builder()
+                .setQuantity(Long.valueOf(item.getQuantity()))
+                .setPriceData(SessionCreateParams.LineItem.PriceData.builder()
+                        .setCurrency("usd")
+                        .setProduct(item.getProduct().getStripeProductId())
+                        .setUnitAmount(Long.valueOf(item.getProduct().getPrice().longValue()) * 100) // Stripe expects the amount in cents
+                        .build())
+                .build();
+            lineItems.add(lineItem);
+        }
 
         String YOUR_DOMAIN = "http://green-goblins.us-east-1.elasticbeanstalk.com";
       
@@ -23,16 +52,11 @@ public class StripeController {
                         .setMode(SessionCreateParams.Mode.PAYMENT)
                         .setSuccessUrl(YOUR_DOMAIN + "/confirmation")
                         .setCancelUrl(YOUR_DOMAIN + "/home")
-                        .addLineItem(
-                                SessionCreateParams.LineItem.builder()
-                                        .setQuantity(1L)
-                                        // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                                        .setPrice("price_1O2Po6AJzwVAVVDsohgTU5z1")
-                                        .build())
+                        .addAllLineItem(lineItems)
                         .build();
         Session session = Session.create(params);
 
         return new RedirectView(session.getUrl());
     }
-}
 
+}
