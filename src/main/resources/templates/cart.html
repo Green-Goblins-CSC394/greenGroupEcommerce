@@ -11,54 +11,40 @@
   <!-- nav bar -->
   <div th:replace="~{fragments/navigation.html :: navBar(${'Shopping Cart'})}"></div>
 
-  <table style="width:96%; margin-left: 1.5%; margin-top: 2%">
-    <!-- First Row -->
-    <h1>Cart</h1>
-    <tr th:each="cartItem: ${cartItems}" style="height: 350px;">
-      <!-- First Column -->
-      <th style="width: 300px; padding-right: 0px; padding-left: 90px">
-        <img th:src="@{${cartItem.getProduct().getImagePath()}}" style="width: 300px; height: 300px;">
-      </th>
-      <th style="width: 200px; padding-right: 100px">
-        <h3 th:text="${cartItem.getProduct().getProductName()}"></h3>
-        <br> <br>
-        <b>Size:</b>
-        <p th:text="${cartItem.getSize()}"></p>
-        <br> <b>Price:</b>
-        <p th:text="${'&#36;'+cartItem.getProduct().getPrice()}"></p>
-        <form th:action="@{/removeFromCart}" method="post">
-          <input type="hidden" th:value="${cartItem.getProduct().getProductID()}" th:name="productID" />
-          <input type="hidden" th:value="${cartItem.getSize()}" th:name="size" />
-          <button class="addToCart" th:name="action" type="submit">🗑 Remove Item</button>
+  <div class="cartContainer" th:if="${cartItemCount > 0}">
+
+    <table>
+      <tr th:each="cartItem, stat: ${cartItems}">
+        <td>
+          <img th:src="@{${cartItem.getProduct().getImagePath()}}">
+        </td>
+        <td>
+          <h2 th:text="${cartItem.getProduct().getProductName().toUpperCase()}"></h2>
+          <p th:text="${'Size: ' + cartItem.getSize()}"></p>
+          <p th:text="${'Quantity: ' + cartItem.getQuantity()}"></p>
+          <p th:text="${'Item Price: ' + '&#36;'+ cartItem.getProduct().getPrice()}"></p>
+          <p th:text="${'Total Price: ' + '&#36;' + (cartItem.getProduct().getPrice() * cartItem.getQuantity())}"></p>
+          <div class="divider"></div>
+        </td>
+      </tr>
+    </table>
+
+    <div class="orderSummary">
+      <div class="orderSummaryContents">
+        <h2>Order Summary</h2>
+        <h3 th:text="${cartItemCount} + ' Item(s)'"></h3>
+        <hr class="rounded">
+        <p th:text="${'Subtotal:  ' + '&#36;' + cartTotal}"></p>
+        <form th:action="@{/call-checkout}" method="post">
+          <div class="checkout_button_container">
+            <button type="submit" id="checkout-button">Proceed to Checkout</button>
+          </div>
         </form>
-      </th>
-      <!-- Second Column -->
-      <th style="width: 20px; padding-right: 200px; text-align: left; font-size: 22px">
-        <h3 style="font-size: 22px"> <b>Quantity </b></h3>
-        <p th:text="${cartItem.getQuantity()}"></p>
-        <br><br><br><br><br><br>
-      </th>
-      <!-- Third Column -->
-      <th style="width: 20px; padding-right: 50px; text-align: left; font-size: 22px">
-        <h3 style="font-size: 22px"> <b>Subtotal </b></h3>
-        <p th:text="${'&#36;'+(cartItem.getProduct().getPrice() * cartItem.getQuantity())}"></p>
-        <br><br><br><br><br><br>
-      </th>
-    </tr>
-  </table>
+      </div>
+    </div>
 
-  <h1 th:if="${cartItems.empty}">Your Cart is Empty</h1>
-
-</body>
-
-<br> <br> <br>
-<form th:action="@{/call-checkout}" method="post">
-  <div class="checkout_button_container" style="padding-bottom: 160px; padding-left: 20px">
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <button type="submit" id="checkout-button" style=" font-size: 25px; width: 222px">Checkout</button>
   </div>
-</form>
-
+  <div th:unless="${cartItemCount > 0}"><h1>Your Cart is Empty</h1></div>
 </body>
 
 </html>
