@@ -61,7 +61,7 @@ public class StripeController {
                 SessionCreateParams.builder()
                         .setMode(SessionCreateParams.Mode.PAYMENT)
                         .setSuccessUrl(YOUR_DOMAIN + "/confirmation")
-                        .setCancelUrl(YOUR_DOMAIN + "/home")
+                        .setCancelUrl(YOUR_DOMAIN + "/cart")
                         .addAllLineItem(lineItems)
                         .build();
         Session session = Session.create(params);
