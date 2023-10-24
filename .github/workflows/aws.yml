@@ -33,7 +33,7 @@ jobs:
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         STRIPE_TEST_PUB_KEY: $${{ secrets.STRIPE_TEST_PUB_KEY }}
         STRIPE_TEST_PRIVATE_KEY: $${{ secrets.STRIPE_TEST_PRIVATE_KEY }}
-      run: echo "spring.datasource.username=$DB_USER" >> src/main/resources/application-prod.properties && echo "spring.datasource.url=$DB_CONNECTION_STR" >> src/main/resources/application-prod.properties && echo "spring.datasource.password=$DB_PASSWORD" >> src/main/resources/application-prod.properties && "stripe.api.publicKey=$STRIPE_TEST_PUB_KEY" >> src/main/resources/application-prod.properties && "stripe.api.secretKey=$STRIPE_TEST_PRIVATE_KEY" >> src/main/resources/application-prod.properties
+      run: echo "spring.datasource.username=$DB_USER" >> src/main/resources/application-prod.properties && echo "spring.datasource.url=$DB_CONNECTION_STR" >> src/main/resources/application-prod.properties && echo "spring.datasource.password=$DB_PASSWORD" >> src/main/resources/application-prod.properties && echo "stripe.api.publicKey=$STRIPE_TEST_PUB_KEY" >> src/main/resources/application-prod.properties && echo "stripe.api.secretKey=$STRIPE_TEST_PRIVATE_KEY" >> src/main/resources/application-prod.properties
 
     - name: Create JAR
       run: mvn clean package --file pom.xml -Dspring.profiles.active=prod
