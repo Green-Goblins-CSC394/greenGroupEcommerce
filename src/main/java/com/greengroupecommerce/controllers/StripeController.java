@@ -3,6 +3,7 @@ package com.greengroupecommerce.controllers;
 import com.greengroupecommerce.entities.Cart;
 import com.greengroupecommerce.entities.Users;
 import com.greengroupecommerce.repositories.UsersRepository;
+import com.stripe.Stripe;
 import com.stripe.model.checkout.Session;
 import com.stripe.param.checkout.SessionCreateParams;
 
@@ -22,6 +23,9 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/call-checkout")
 public class StripeController {
 
+    @Value("${stripe.api.secretKey}")
+    private String apiKey;
+
     @Value("${greengoblins.url}")
     private String domainURL;
   
@@ -30,6 +34,8 @@ public class StripeController {
 
     @PostMapping
     public RedirectView createCheckoutSession(Principal principal, Model model) throws Exception {
+        
+        Stripe.apiKey = apiKey;
 
         Users user = this.userRepository.findByEmail(principal.getName());
         List<Cart> cartItems = user.getCartItems();
