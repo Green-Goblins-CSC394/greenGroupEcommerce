@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,9 @@ import org.springframework.web.servlet.view.RedirectView;
 @Controller
 @RequestMapping("/call-checkout")
 public class StripeController {
+
+    @Value("${greengoblins.url}")
+    private String domainURL;
   
     @Autowired
     private UsersRepository userRepository;
@@ -45,7 +49,7 @@ public class StripeController {
             lineItems.add(lineItem);
         }
 
-        String YOUR_DOMAIN = "http://green-goblins.us-east-1.elasticbeanstalk.com";
+        String YOUR_DOMAIN = this.domainURL;
       
         SessionCreateParams params =
                 SessionCreateParams.builder()
