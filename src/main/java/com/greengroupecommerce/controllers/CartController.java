@@ -36,6 +36,8 @@ public class CartController {
 
     Users user = this.userRepository.findByEmail(principal.getName());
     model.addAttribute("cartItems", user.getCartItems());
+    model.addAttribute("cartTotal", this.userRepository.getCartTotal(user.getUserID()));
+    model.addAttribute("cartItemCount", this.userRepository.getCartItemCount(user.getUserID()));
 
     return "cart";
   }
