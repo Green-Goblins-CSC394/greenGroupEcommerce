@@ -10,6 +10,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.stripe.Stripe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ import org.springframework.web.servlet.view.RedirectView;
 @RequestMapping("/call-checkout")
 public class StripeController {
 
+    @Value("${stripe.api.secretKey}")
+    private String apiKey;
+
     @Value("${greengoblins.url}")
     private String domainURL;
   
@@ -30,6 +34,8 @@ public class StripeController {
 
     @PostMapping
     public RedirectView createCheckoutSession(Principal principal, Model model) throws Exception {
+
+        Stripe.apiKey = apiKey;
 
         Users user = this.userRepository.findByEmail(principal.getName());
         List<Cart> cartItems = user.getCartItems();
