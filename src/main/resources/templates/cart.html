@@ -13,6 +13,7 @@
 
   <table style="width:96%; margin-left: 1.5%; margin-top: 2%">
     <!-- First Row -->
+    <h1>Cart</h1>
     <tr th:each="cartItem: ${cartItems}" style="height: 350px;">
       <!-- First Column -->
       <th style="width: 300px; padding-right: 0px; padding-left: 90px">
@@ -46,11 +47,12 @@
     </tr>
   </table>
 
+  <h1 th:if="${cartItems.empty}">Your Cart is Empty</h1>
 
 </body>
 
 <br> <br> <br>
-<form th:action="@{/checkout}" method="post">
+<form th:action="@{/call-checkout}" method="post">
   <div class="checkout_button_container" style="padding-bottom: 160px; padding-left: 20px">
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <button type="submit" id="checkout-button" style=" font-size: 25px; width: 222px">Checkout</button>
