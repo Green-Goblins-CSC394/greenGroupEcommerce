@@ -73,6 +73,9 @@ public class ConfirmationController {
     user.addOrderToUser(order);
     this.userRepository.save(user);
 
+    //add orderDetails to model for thymeleaf rendering
+    model.addAttribute("order", order);
+
     return;
   }
 }
