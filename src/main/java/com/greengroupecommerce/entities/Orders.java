@@ -2,6 +2,7 @@ package com.greengroupecommerce.entities;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -30,12 +31,12 @@ public class Orders {
 	@Column(name = "order_id")
 	private UUID orderID;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	private Users user;
   
   @Column(name = "transaction_price")
-	private BigDecimal transactionbPrice;
+	private BigDecimal transactionPrice;
 
   @Column(name = "tracking_number")
 	private String trackingNumber;
@@ -48,5 +49,9 @@ public class Orders {
 
 	public void addOrderItemToOrder(OrderItems orderItem) {
 		this.orderItems.add(orderItem);
+	}
+
+	public String getCompletedAt() {
+		return new SimpleDateFormat("MM/dd/yyyy").format(this.completedAt);
 	}
 }

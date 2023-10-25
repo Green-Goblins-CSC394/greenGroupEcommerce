@@ -1,6 +1,7 @@
 package com.greengroupecommerce.controllers;
 
 import java.security.Principal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,11 @@ public class ConfirmationController {
     Users user = this.userRepository.findByEmail(principal.getName());
 
     Orders order = new Orders();
+
+    Timestamp currentTime = new Timestamp(System.currentTimeMillis());
+
+    order.setTransactionPrice(this.userRepository.getCartTotal(user.getUserID()));
+    order.setCompletedAt(currentTime);
 
     List<Cart> flagForRemoval = new ArrayList<Cart>();
     for(Cart cartItem : user.getCartItems()) {

@@ -282,3 +282,36 @@ hr.rounded {
 .orderSummaryContents button:hover {
   background-color:#A4C3B2;
 }
+
+/* Account Page */
+.accountContainer {
+  width: 20%;
+  height: 80%;
+  margin: auto;
+  margin-top: 2%;
+  min-width: 300px;
+}
+
+.accountContainer h1 {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.accountContainer th {
+  padding: 8px;
+}
+
+.accountContainer td {
+  padding: 8px;
+  border-bottom: solid #CCE3DE;
+  color: #F6FFF8;
+}
+
+.accountContainer th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #CCE3DE;
+  color: #000;
+}
