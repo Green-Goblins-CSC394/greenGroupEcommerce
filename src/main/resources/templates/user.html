@@ -7,11 +7,29 @@
   <link rel="stylesheet" th:href="@{/css/consolidated-stylesheet.css}">
 </head>
 
-  <body>
-    <!-- nav bar -->
-    <div th:replace="~{fragments/navigation.html :: navBar(${''})}"></div>
+<body>
+  <!-- nav bar -->
+  <div th:replace="~{fragments/navigation.html :: navBar(${'Account'})}"></div>
 
-    <h1 style="text-align: center; padding: 10px">Empty User Page</h1>
-  </body>
+  <div class="accountContainer">
+    <h1>Order History</h1>
+    <table>
+      <tr>
+        <th>Order Number</th>
+        <th>Order Details</th>
+      </tr>
+      <tr th:each="order: ${orderList}">
+        <td>
+          <p th:text="${order.getOrderID()}"></p>
+        </td>
+        <td>
+          <p th:text="${'Order Date: ' + order.getCompletedAt()}"></p>
+          <p th:text="${'Total: ' + '&#36;' + (order.getTransactionPrice())}"></p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</body>
 
 </html>

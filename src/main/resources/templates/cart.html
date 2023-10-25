@@ -24,6 +24,11 @@
           <p th:text="${'Quantity: ' + cartItem.getQuantity()}"></p>
           <p th:text="${'Item Price: ' + '&#36;'+ cartItem.getProduct().getPrice()}"></p>
           <p th:text="${'Total Price: ' + '&#36;' + (cartItem.getProduct().getPrice() * cartItem.getQuantity())}"></p>
+          <form th:action="@{/removeFromCart}" method="post">
+            <input type="hidden" th:value="${cartItem.getProduct().getProductID()}" th:name="productID" />
+            <input type="hidden" th:value="${cartItem.getSize()}" th:name="size" />
+            <button class="addToCart" th:name="action" type="submit">🗑 Remove Item</button>
+          </form>
           <div class="divider"></div>
         </td>
       </tr>
